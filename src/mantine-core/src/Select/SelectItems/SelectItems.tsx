@@ -10,6 +10,7 @@ export type SelectItemsStylesNames = Selectors<typeof useStyles>;
 
 export interface SelectItemsProps extends DefaultProps<SelectItemsStylesNames> {
   data: SelectItem[];
+  value: string[];
   hovered: number;
   __staticSelector: string;
   isItemSelected?(itemValue: string): boolean;
@@ -26,6 +27,7 @@ export interface SelectItemsProps extends DefaultProps<SelectItemsStylesNames> {
 
 export function SelectItems({
   data,
+  value,
   hovered,
   classNames,
   styles,
@@ -77,6 +79,7 @@ export function SelectItems({
             : null
         }
         disabled={item.disabled}
+        selected={value.some((val) => val === item.value)}
         {...item}
       />
     );
