@@ -28,6 +28,7 @@ const buttonSizes = {
 
 export function DefaultValue({
   label,
+  children,
   classNames,
   styles,
   className,
@@ -47,20 +48,7 @@ export function DefaultValue({
   return (
     <div className={cx(classes.defaultValue, className)} {...others}>
       <span className={classes.defaultValueLabel}>{label}</span>
-
-      {!disabled && !readOnly && (
-        <CloseButton
-          aria-hidden
-          onMouseDown={onRemove}
-          size={buttonSizes[size]}
-          radius={2}
-          color="blue"
-          variant="transparent"
-          iconSize={buttonSizes[size] / 2}
-          className={classes.defaultValueRemove}
-          tabIndex={-1}
-        />
-      )}
+      {children}
     </div>
   );
 }
